@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Mastery Quizzes</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-primary: #3b82f6; 
+            --accent-secondary: #8b5cf6;
+            --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            --card-hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Background */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.08), transparent 25%);
+        }
+
+        header {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        p.subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 2rem;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 240px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-hover-shadow);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .card:hover::before {
+            opacity: 0.05;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.03);
+            position: absolute;
+            top: -1.5rem;
+            right: -1rem;
+            transition: color 0.3s ease;
+        }
+
+        .card:hover .card-number {
+            color: rgba(59, 130, 246, 0.1);
+        }
+
+        .card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-desc {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-arrow {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 500;
+            color: var(--accent-primary);
+            transition: gap 0.2s ease;
+            gap: 0.5rem;
+        }
+
+        .card:hover .card-arrow {
+            gap: 0.8rem;
+            color: var(--accent-secondary);
+        }
+
+        footer {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 4rem 0 2rem;
+            text-align: center;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient-bg"></div>
+    <header>
+        <h1>HTML Mastery</h1>
+        <p class="subtitle">Test your knowledge with our premium collection of HTML quizzes. Level up your skills one question at a time.</p>
+    </header>
+
+    <main>
+        <section>
+            <div class="grid">
+                <a href="quiz1.html" class="card">
+                    <div class="card-number">01</div>
+                    <div class="card-content">
+                        <div class="card-title">HTML Quiz 1</div>
+                        <div class="card-desc">Master the foundations. Tags, attributes, and document structure.</div>
+                        <div class="card-arrow">Start Quiz &rarr;</div>
+                    </div>
+                </a>
+                <a href="quiz2.html" class="card">
+                    <div class="card-number">02</div>
+                    <div class="card-content">
+                        <div class="card-title">HTML Quiz 2</div>
+                        <div class="card-desc">Dive deeper into forms, semantic elements, and accessibility.</div>
+                        <div class="card-arrow">Start Quiz &rarr;</div>
+                    </div>
+                </a>
+                <a href="quiz3.html" class="card">
+                    <div class="card-number">03</div>
+                    <div class="card-content">
+                        <div class="card-title">HTML Quiz 3</div>
+                        <div class="card-desc">Challenge yourself with tables, media, and HTML5 APIs.</div>
+                        <div class="card-arrow">Start Quiz &rarr;</div>
+                    </div>
+                </a>
+                <a href="quiz4.html" class="card">
+                    <div class="card-number">04</div>
+                    <div class="card-content">
+                        <div class="card-title">HTML Quiz 4</div>
+                        <div class="card-desc">The ultimate test. Meta tags, SEO, and advanced integration.</div>
+                        <div class="card-arrow">Start Quiz &rarr;</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- CSS SECTION -->
+        <section>
+            <div class="section-title">CSS Mastery</div>
+            
+            <div class="grid">
+                <a href="quiz5.html" class="card">
+                    <div class="card-number">01</div>
+                    <div class="card-content">
+                        <div class="card-title">CSS Quiz 1</div>
+                        <div class="card-desc">Selectors, colors, and the cascade. Build your foundation.</div>
+                        <div class="card-arrow">Start Quiz &rarr;</div>
+                    </div>
+                </a>
+                <a href="quiz6.html" class="card">
+                    <div class="card-number">02</div>
+                    <div class="card-content">
+                        <div class="card-title">CSS Quiz 2</div>
+                        <div class="card-desc">Box model, margins, and padding. Control the space.</div>
+                        <div class="card-arrow">Start Quiz &rarr;</div>
+                    </div>
+                </a>
+                <a href="quiz7.html" class="card">
+                    <div class="card-number">03</div>
+                    <div class="card-content">
+                        <div class="card-title">CSS Quiz 3</div>
+                        <div class="card-desc">Flexbox fundamentals. Align, distribute, and conquer layouts.</div>
+                        <div class="card-arrow">Start Quiz &rarr;</div>
+                    </div>
+                </a>
+                <a href="quiz8.html" class="card">
+                    <div class="card-number">04</div>
+                    <div class="card-content">
+                        <div class="card-title">CSS Quiz 4</div>
+                        <div class="card-desc">Grid Layout basics. Rows, columns, and areas tailored to perfection.</div>
+                        <div class="card-arrow">Start Quiz &rarr;</div>
+                    </div>
+                </a>
+                <a href="quiz9.html" class="card">
+                    <div class="card-number">05</div>
+                    <div class="card-content">
+                        <div class="card-title">CSS Quiz 5</div>
+                        <div class="card-desc">Conquer animations, specificity wars, and advanced selectors.</div>
+                        <div class="card-arrow">Start Quiz &rarr;</div>
+                    </div>
+                </a>
+                <a href="quiz10.html" class="card">
+                    <div class="card-number">06</div>
+                    <div class="card-content">
+                        <div class="card-title">CSS Quiz 6</div>
+                        <div class="card-desc">The ultimate test. Positioning, expert Flexbox maneuvers, and Grid layout.</div>
+                        <div class="card-arrow">Start Quiz &rarr;</div>
+                    </div>
+                </a>
+                <a href="quiz11.html" class="card">
+                    <div class="card-number">07</div>
+                    <div class="card-content">
+                        <div class="card-title">CSS Quiz 7</div>
+                        <div class="card-desc">Master transitions, transforms, keyframe animations, and advanced Grid layout.</div>
+                        <div class="card-arrow">Start Quiz &rarr;</div>
+                    </div>
+                </a>
+                <a href="quiz12.html" class="card">
+                    <div class="card-number">08</div>
+                    <div class="card-content">
+                        <div class="card-title">CSS Quiz 8</div>
+                        <div class="card-desc">Expert layout mechanics involving stacking contexts, overflow, and advanced behavior.</div>
+                        <div class="card-arrow">Start Quiz &rarr;</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 HTML Mastery Series. Designed for Excellence.
+    </footer>
+</body>
+</html>
