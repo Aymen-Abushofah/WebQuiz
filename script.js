@@ -219,8 +219,8 @@ function showResults() {
         if (match && match[1]) {
             const currentQuizNum = parseInt(match[1], 10);
             const nextQuizNum = currentQuizNum + 1;
-            // Simple check - assuming only 4 quizzes for now, or just link and let 404 if not exists
-            if (currentQuizNum < 4) { // Explicitly capping at 4 based on user context
+            // Simple check - assuming 12 quizzes total (4 HTML + 8 CSS)
+            if (currentQuizNum < 12) { 
                 const nextQuizUrl = `quiz${nextQuizNum}.html`;
                 const nextQuizBtn = document.createElement('button');
                 nextQuizBtn.className = 'nav-btn';
