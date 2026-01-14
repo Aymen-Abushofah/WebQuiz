@@ -36,7 +36,7 @@
             { question: "What happens?<pre>.box {\n  transition: all 0.5s;\n  display: none;\n}\n.box:hover {\n  display: block;\n}</pre>", options: ["Browser error", "Smooth fade", "No transition", "Smooth display"], answerIndex: 2 },
             { question: "What happens to surrounding elements?<pre>.box {\n  transform: translateX(100px);\n}</pre>", options: ["They move", "Nothing changes", "Margin collapses", "Layout changes"], answerIndex: 1 },
             { question: "After animation ends:<pre>@keyframes move {\n  to { transform: translateX(100px); }\n}\n.box {\n  animation: move 1s;\n}</pre>", options: ["Returns to start", "Disappears", "Repeats", "Stays at 100px"], answerIndex: 0 },
-            { question: "Padding-top is based on:<pre>.box {\n  width: 200px;\n  padding-top: 50%;\n}</pre>", options: ["Box height", "Parent width", "Viewport", "Box width"], answerIndex: 1 },
+            { question: "Padding-top is based on:<pre>.box {\n  width: 200px;\n  padding-top: 50%;\n}</pre>", options: ["Box height", "Parent width", "Viewport", "Box width"], answerIndex: 3 },
             { question: "What does cover do?<pre>div {\n  background-size: cover;\n}</pre>", options: ["Fill container, may crop", "Repeat image", "Fit entire image", "Stretch image"], answerIndex: 0 },
             { question: "What happens?<pre>body {\n  overflow: hidden;\n}\n.box {\n  position: fixed;\n}</pre>", options: ["Box scrolls", "Box remains visible", "Page breaks", "Box clipped"], answerIndex: 1 },
             { question: "Why is there space between them?<pre>&lt;span&gt;A&lt;/span&gt;\n&lt;span&gt;B&lt;/span&gt;</pre>", options: ["HTML whitespace", "Margin", "Line-height", "Padding"], answerIndex: 0 },
@@ -51,4 +51,5 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
