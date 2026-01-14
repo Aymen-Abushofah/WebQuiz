@@ -28,7 +28,7 @@
             { question: "What happens?<pre>span {\n  width: 200px;\n  height: 200px;\n}</pre>", options: ["Neither applies", "Only width applies", "Width and height apply", "Only height applies"], answerIndex: 0 },
             { question: "Two divs stacked vertically — space between them is:<pre>div {\n  margin-top: 30px;\n  margin-bottom: 20px;\n}</pre>", options: ["10px", "20px", "50px", "30px"], answerIndex: 3 },
             { question: "What happens?<pre>.parent {\n  position: relative;\n  overflow: hidden;\n}\n.child {\n  position: absolute;\n  top: -50px;\n}</pre>", options: ["Child remains visible", "Overflow ignored", "Child is clipped", "Child moves viewport"], answerIndex: 2 },
-            { question: ".child is positioned relative to:<pre>.parent {\n  transform: translateZ(0);\n}\n.child {\n  position: fixed;\n}</pre>", options: [".parent", "Body", "HTML", "Viewport"], answerIndex: 0 },
+            { question: ".child is positioned relative to:<pre>.parent {\n  transform: translateZ(0);\n}\n.child {\n  position: fixed;\n}</pre>", options: [".parent", "Body", "HTML", "Viewport"], answerIndex: 3 },
             { question: "Container width is 200px. What happens?<pre>.container {\n  display: flex;\n}\n.item {\n  width: 300px;\n  flex-shrink: 1;\n}</pre>", options: ["Item shrinks", "Layout breaks", "Item overflows", "Item wraps"], answerIndex: 0 },
             { question: "What is .item height?<pre>.container {\n  display: flex;\n  height: 200px;\n}\n.item {\n  height: 100%;\n}</pre>", options: ["viewport height", "content height", "200px", "auto"], answerIndex: 2 },
             { question: "You place 5 items. What happens?<pre>.container {\n  display: grid;\n  grid-template-columns: repeat(2, 1fr);\n}</pre>", options: ["Items disappear", "Extra rows are created", "Error", "Items overlap"], answerIndex: 1 },
@@ -51,3 +51,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+
