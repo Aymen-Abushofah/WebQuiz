@@ -189,9 +189,14 @@ function showResults() {
     // Calculate Score
     const percentage = Math.round((score / quizData.length) * 100);
     
+    // Determine subject based on page title
+    const isCSS = document.title.includes("CSS");
+    const subject = isCSS ? "CSS" : "HTML";
+    const article = isCSS ? "a" : "an"; // "a CSS..." vs "an HTML..."
+
     let feedback = "Good effort! Every master was once a beginner.";
-    if (percentage === 100) feedback = "Flawless Victory! You're an HTML expert!";
-    else if (percentage >= 80) feedback = "Excellent work! You have a strong command of HTML.";
+    if (percentage === 100) feedback = `Flawless Victory! You're ${article} ${subject} expert!`;
+    else if (percentage >= 80) feedback = `Excellent work! You have a strong command of ${subject}.`;
     else if (percentage >= 60) feedback = "Well done! You have a solid foundation.";
     
     elements.resultsContainer.innerHTML = `
