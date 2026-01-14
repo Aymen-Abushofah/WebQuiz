@@ -340,29 +340,64 @@ h1 {
 }
 
 /* Mobile */
+/* Mobile App Shell Layout */
 @media (max-width: 650px) {
   body {
     padding: 0;
+    overflow: hidden; /* Prevent body scroll, handle inside container */
+    align-items: stretch; /* Stretch container to fill height */
   }
+
   #quiz-container {
+    width: 100%;
     max-width: 100%;
-    min-height: 100vh;
+    height: 100dvh; /* Fixed full viewport height */
+    min-height: 0; /* Override any min-height */
     border-radius: 0;
     border: none;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
   }
+
   .quiz-header {
-    padding: 1.5rem 1.5rem 1rem;
+    flex: 0 0 auto; /* Fixed header */
+    padding: 1rem 1.25rem 0.6rem;
+    background: var(--bg-dark); /* Ensure background is solid behind header */
+    z-index: 10;
   }
-  .card {
-    padding: 1.5rem;
+
+  #card-container {
+    flex: 1 1 auto; /* Grow to fill space */
+    position: relative;
+    overflow-y: auto; /* Internal scroll */
+    overflow-x: hidden;
+    height: auto !important; /* Override JS height calculation */
+    /* Add padding bottom to ensure last content isn't cut off */
+    padding-bottom: 2rem;
   }
+
+  /* Force active card to flow in the scroll container */
+  .card.active {
+    position: relative;
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    pointer-events: auto;
+    padding-bottom: 2rem;
+  }
+
   #navigation {
-    padding: 1rem;
+    flex: 0 0 auto; /* Fixed footer */
+    padding: 1rem 1.25rem;
+    margin-top: 0;
+    background: var(--bg-dark); /* Solid background for nav area */
+    border-top: 1px solid var(--border-color);
+    z-index: 10;
+    /* Ensure it sits above content */
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
   }
-  h1 {
-    font-size: 1.5rem;
-  }
-  .question-text {
-    font-size: 1.15rem;
-  }
+
+  h1 { font-size: 1.4rem; }
+  .question-text { font-size: 1.1rem; margin-bottom: 0.75rem; }
+  .option { padding: 0.75rem 1rem; }
 }
